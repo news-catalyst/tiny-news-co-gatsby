@@ -13,6 +13,7 @@ export default function Template({
         <div className="article">
           <h1>{frontmatter.headline}</h1>
           <h2>{frontmatter.date}</h2>
+          <h3>by {frontmatter.byline}</h3>
           <div
             className="article-content"
             dangerouslySetInnerHTML={{ __html: html }}
@@ -30,6 +31,7 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         path
+        byline
         headline
       }
     }

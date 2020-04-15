@@ -13,7 +13,7 @@ export default ({ data }) => {
       <div>
         <ul>
         {data.allMarkdownRemark.edges.map(({ node }, index) => (
-          <li key={index}><a href={node.frontmatter.path}>{node.frontmatter.headline}</a></li>
+          <li key={index}><a href={node.fields.slug}>{node.frontmatter.headline}</a></li>
         ))}
         </ul>
       </div>
@@ -27,8 +27,10 @@ export const query = graphql`
       totalCount
       edges {
         node {
+          fields{
+            slug
+          }
           frontmatter {
-            path
             headline
           }
         }

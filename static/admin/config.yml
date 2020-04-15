@@ -10,8 +10,28 @@ collections:
     label: Articles
     folder: articles
     create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { name: path, label: Path }
       - { name: date, label: Date, widget: datetime }
       - { name: headline, label: Headline }
+      - { name: byline, label: Byline }
       - { name: body, label: Body, widget: markdown }
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/pages/index.md"
+        label: "Landing Page"
+        name: "index"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Image, name: image, widget: image}
+          - {label: Heading, name: heading, widget: string}
+          - {label: Subheading, name: subheading, widget: string}
+          - {label: Description, name: description, widget: string}
+      - file: "src/pages/about/index.md"
+        label: "About"
+        name: "about"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
