@@ -1,5 +1,5 @@
 ---
-path: /test/
+path: /articles/test/
 date: 2020-04-15T01:52:15.238Z
 headline: Test Headline
 ---
