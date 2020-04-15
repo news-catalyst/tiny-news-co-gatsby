@@ -45,7 +45,7 @@ This is hello-world boilerplate used to test Gatsby + Netlify-CMS for Tiny News 
 
 1. **Check out the Netlify-CMS interface.**
 
-  Open `http://localhost:8000/admin/`
+    Open `http://localhost:8000/admin/`
 
 ## 🧐 What's inside?
 
