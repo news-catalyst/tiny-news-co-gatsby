@@ -1,4 +1,10 @@
 import React from "react"
-import { graphql } from "gatsby"
+import Layout from "../components/layout"
 
-export default () => <div>Hello world!</div>
+
+export default () => (
+  <Layout>
+    <h1>tiny news co</h1>
+    <p>this will eventually list the latest articles</p>
+  </Layout>
+)
