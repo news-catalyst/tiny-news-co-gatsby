@@ -2,6 +2,7 @@
 path: /articles/counting-on-kensington
 date: 2020-04-15T05:58:45.260Z
 headline: The 2020 Census is on April 1.
+byline: JILLIAN BAUER-REESE
 ---
 The United States Census Bureau classifies Kensington as a “hard-to-count” community, so for our latest issue, we tackled a series of stories that explore the importance of residents getting counted in the 2020 Census, and what an accurate (or inaccurate) population count means for the neighborhood.
 
