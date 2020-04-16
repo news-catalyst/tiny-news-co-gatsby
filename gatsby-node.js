@@ -5,14 +5,21 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
+  // generate a slug for any markdown file with a headline
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `articles` })
-    console.log(slug)
-    createNodeField({
-      node,
-      name: `slug`,
-      value: `/articles${slug}`,
-    })
+    if (node.frontmatter) {
+      let slug = createFilePath({ node, getNode, basePath: `articles` })
+      // use a path if set in the cms
+      if (node.frontmatter.path !== undefined) {
+        slug = node.frontmatter.path
+      }
+      console.log("Using slug for article: ", slug)
+      createNodeField({
+        node,
+        name: `slug`,
+        value: slug,
+      })
+    }
   }
 }
 
@@ -28,6 +35,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           fields {
             slug
           }
+          frontmatter {
+            path
+            headline
+            templateKey
+          }
         }
       }
     }
@@ -42,12 +54,30 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     const articleTemplate = path.resolve(`src/templates/articleTemplate.js`)
 
     articles.forEach(edge => {
-      createPage({
-        path: edge.node.fields.slug,
-        component: articleTemplate,
-        // additional data can be passed via context
-        context: {},
-      })
+      if (edge.node.fields && edge.node.fields.slug && edge.node.frontmatter.headline !== null) {
+        console.log("creating page: ", edge.node.fields.slug)
+        createPage({
+          path: edge.node.fields.slug,
+          component: articleTemplate,
+          // additional data can be passed via context
+          context: {},
+        })
+      } else if (edge.node.frontmatter.path !== null && edge.node.frontmatter.templateKey !== null) {
+        console.log("creating page: ", edge.node.frontmatter.path)
+        const id = edge.node.id
+        createPage({
+          path: edge.node.frontmatter.path,
+          component: path.resolve(
+            `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+          ),
+          // additional data can be passed via context
+          context: {
+            id,
+          },
+        })
+      } else {
+        console.log("not sure what to do with: ", edge.node)
+      }
     })
   })
 }

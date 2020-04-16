@@ -8,30 +8,28 @@ public_folder: /assets
 collections:
   - name: articles
     label: Articles
+    label_singular: Article
     folder: src/articles
     create: true
+    identifier_field: headline
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+
     fields:
+      - { name: path, label: Path, widget: string }
       - { name: date, label: Date, widget: datetime }
       - { name: headline, label: Headline }
       - { name: byline, label: Byline }
       - { name: body, label: Body, widget: markdown }
-  - name: "pages"
-    label: "Pages"
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "articleTemplate"}
+  - name: pages
+    label: Pages
+    label_singular: Page
     files:
-      - file: "src/pages/index.md"
-        label: "Landing Page"
-        name: "index"
+      - file: src/pages/about/index.md
+        label: About
+        name: about
         fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Image, name: image, widget: image}
-          - {label: Heading, name: heading, widget: string}
-          - {label: Subheading, name: subheading, widget: string}
-          - {label: Description, name: description, widget: string}
-      - file: "src/pages/about/index.md"
-        label: "About"
-        name: "about"
-        fields:
+          - { label: Path, name: path, widget: string }
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Body", name: "body", widget: "markdown"}
