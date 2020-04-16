@@ -1,4 +1,5 @@
 ---
+path: /articles/overdose
 date: 2020-04-15T21:24:24.086Z
 headline: Overdose reversals during COVID-19 pandemic pose new challenges, fears
   for the harm reduction community
