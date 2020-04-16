@@ -1,4 +1,5 @@
 ---
+path: /articles/city-clears
 date: 2020-04-15T21:25:07.470Z
 headline: City clears encampment during COVID-19 pandemic, drawing criticism
   from housing activists
