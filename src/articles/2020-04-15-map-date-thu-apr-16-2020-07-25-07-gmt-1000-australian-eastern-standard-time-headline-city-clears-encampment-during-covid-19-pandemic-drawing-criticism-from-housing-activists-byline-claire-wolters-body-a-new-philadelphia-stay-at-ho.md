@@ -4,6 +4,7 @@ date: 2020-04-15T21:25:07.470Z
 headline: City clears encampment during COVID-19 pandemic, drawing criticism
   from housing activists
 byline: CLAIRE WOLTERS
+templateKey: articleTemplate
 ---
 A NEW PHILADELPHIA STAY-AT-HOMEorder shut down all non-life-essential businesses, gatherings, and activities Monday due to the rising severity of the COVID-19 pandemic. However, the order didn’t stop the city’s plans to remove people experiencing homelessness from an encampment near the Convention Center Monday morning.
 

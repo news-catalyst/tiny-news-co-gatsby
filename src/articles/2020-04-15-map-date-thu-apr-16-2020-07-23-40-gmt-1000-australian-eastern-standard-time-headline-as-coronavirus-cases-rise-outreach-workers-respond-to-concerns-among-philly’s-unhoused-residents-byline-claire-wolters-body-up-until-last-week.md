@@ -4,6 +4,7 @@ date: 2020-04-15T21:23:40.204Z
 headline: As coronavirus cases rise, outreach workers respond to concerns among
   Philly’s unhoused residents
 byline: CLAIRE WOLTERS
+templateKey: articleTemplate
 ---
 UP UNTIL LAST WEEK, Lawrence Williams spent his winter couch-surfing across North Philadelphia with his elderly mother. But as of Monday, newly discharged from the hospital after recovering from a stroke, he found himself alone. The reason? His mother was worried that he had been exposed to the COVID-19 virus while in the hospital — and could potentially transfer it to her.
 

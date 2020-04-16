@@ -3,6 +3,7 @@ path: /articles/finding-life-after-service
 date: 2020-04-15T06:24:33.399Z
 headline: Finding Life After Service
 byline: HENRY SAVAGE
+templateKey: articleTemplate
 ---
 ## How can we best support our veterans?
 
