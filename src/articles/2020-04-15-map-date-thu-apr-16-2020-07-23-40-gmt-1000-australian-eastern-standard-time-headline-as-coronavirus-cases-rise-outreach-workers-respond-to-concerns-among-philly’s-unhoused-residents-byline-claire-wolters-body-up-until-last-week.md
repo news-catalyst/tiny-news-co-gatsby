@@ -4,7 +4,7 @@ date: 2020-04-15T21:23:40.204Z
 headline: As coronavirus cases rise, outreach workers respond to concerns among
   Philly’s unhoused residents
 byline: CLAIRE WOLTERS
-tags: 
+tags:
   - voices
 templateKey: articleTemplate
 ---
