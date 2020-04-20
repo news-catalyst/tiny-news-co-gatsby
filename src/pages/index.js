@@ -1,12 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/Layout"
+import ArticleLayout from "../components/ArticleLayout"
 
 export default ({ data }) => {
   console.log(data)
 
   return(
-    <Layout>
+    <ArticleLayout>
       <h1>tiny news co</h1>
       <p>here is a list of {data.allMarkdownRemark.totalCount} articles created in the cms</p>
 
@@ -17,7 +17,7 @@ export default ({ data }) => {
         ))}
         </ul>
       </div>
-    </Layout>
+    </ArticleLayout>
   )
 }
 

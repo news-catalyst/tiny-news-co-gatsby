@@ -80,4 +80,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       }
     })
   })
+  .catch((err) => {
+    console.log(err)
+  })
+
 }
