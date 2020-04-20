@@ -3,16 +3,17 @@ path: /articles/tiny-houses-are-cool
 date: 2020-04-20T22:23:07.219Z
 headline: Tiny homes are adorable and cool, but how does the reality of living
   in one compare with the image?
-byline: By a tinyint
+byline: A tinyint
 tags:
-  - tiny australia
+  - tiny
+  - australia
 templateKey: articleTemplate
 ---
 They look beautiful online, seem to offer a way to escape the mortgage trap and present an opportunity to downsize your possessions, but how simple is real life in a tiny house?
 
 Fay (not her real name) and her partner live in a tiny house that they built themselves in the Perth metropolitan area.
 
-She told Jessica Strutt on[ABC Radio Perth](https://www.abc.net.au/perth/)that their tiny house is comfortable but that "the first thing you notice is that it gets messy really quickly".
+She told Jessica Strutt on [ABC Radio Perth](https://www.abc.net.au/perth/) that their tiny house is comfortable but that "the first thing you notice is that it gets messy really quickly".
 
 "The same surface has multiple uses so if you have something on that surface and you want to use it for something else you have to clear it up.
 
