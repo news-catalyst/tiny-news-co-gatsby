@@ -14,7 +14,7 @@ export default ({ children }) => (
         <h3 style={{ display: `inline` }}>Tiny News Co</h3>
       </Link>
       <ul style={{ listStyle: `none`, float: `right` }}>
-        <ListLink to="/">Home</ListLink>
+        <ListLink to="/tags/">Topics</ListLink>
         <ListLink to="/about/">About</ListLink>
       </ul>
     </header>

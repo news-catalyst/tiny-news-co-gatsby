@@ -20,6 +20,7 @@ collections:
       - { name: headline, label: Headline }
       - { name: byline, label: Byline }
       - { name: body, label: Body, widget: markdown }
+      - {label: "Tags", name: "tags", widget: "list"}
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "articleTemplate"}
   - name: pages
     label: Pages

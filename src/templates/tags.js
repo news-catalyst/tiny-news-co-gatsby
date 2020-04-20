@@ -1,0 +1,66 @@
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import ArticleLayout from "../components/ArticleLayout"
+
+class TagRoute extends React.Component {
+  render() {
+    const articles = this.props.data.allMarkdownRemark.edges
+    const articleLinks = articles.map(article => (
+      <li key={article.node.fields.slug}>
+        <Link to={article.node.fields.slug}>
+          {article.node.frontmatter.headline}
+        </Link>
+      </li>
+    ))
+    const tag = this.props.pageContext.tag
+    const totalCount = this.props.data.allMarkdownRemark.totalCount
+    const tagHeader = `${totalCount} article${
+      totalCount === 1 ? '' : 's'
+    } tagged with “${tag}”`
+
+    return (
+      <ArticleLayout>
+        <section className="section">
+          <div className="container content">
+            <div className="columns">
+              <div
+                className="column is-10 is-offset-1"
+                style={{ marginBottom: '6rem' }}
+              >
+                <h3 className="title is-size-4 is-bold-light">{tagHeader}</h3>
+                <ul className="taglist">{articleLinks}</ul>
+                <p>
+                  <Link to="/tags/">Browse all topics</Link>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ArticleLayout>
+    )
+  }
+}
+
+export default TagRoute
+
+export const tagPageQuery = graphql`
+  query TagPage($tag: String) {
+    allMarkdownRemark(
+      limit: 1000
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
+    ) {
+      totalCount
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            headline
+          }
+        }
+      }
+    }
+  }
+`

@@ -1,3 +1,4 @@
+const _ = require('lodash')
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
@@ -36,6 +37,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             slug
           }
           frontmatter {
+            tags
             path
             headline
             templateKey
@@ -58,6 +60,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         console.log("creating page: ", edge.node.fields.slug)
         createPage({
           path: edge.node.fields.slug,
+          tags: edge.node.frontmatter.tags,
           component: articleTemplate,
           // additional data can be passed via context
           context: {},
@@ -79,6 +82,30 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         console.log("not sure what to do with: ", edge.node)
       }
     })
+    // Tag pages:
+    let tags = []
+    // Iterate through each article, putting all found tags into `tags`
+    articles.forEach(edge => {
+      if (_.get(edge, `node.frontmatter.tags`)) {
+        tags = tags.concat(edge.node.frontmatter.tags)
+      }
+    })
+    // Eliminate duplicate tags
+    tags = _.uniq(tags)
+
+    // Make tag pages
+    tags.forEach(tag => {
+      const tagPath = `/tags/${_.kebabCase(tag)}/`
+
+      createPage({
+        path: tagPath,
+        component: path.resolve(`src/templates/tags.js`),
+        context: {
+          tag,
+        },
+      })
+    })
+
   })
   .catch((err) => {
     console.log(err)

@@ -4,6 +4,8 @@ date: 2020-04-15T21:24:24.086Z
 headline: Overdose reversals during COVID-19 pandemic pose new challenges, fears
   for the harm reduction community
 byline: CLAIRE WOLTERS
+tags: 
+  - voices
 templateKey: articleTemplate
 ---
 IN THE LAST FEW YEARS, Roz Pichardo has reversed hundreds of overdoses. But about three weeks ago was one of the first times she felt scared reversing one.
