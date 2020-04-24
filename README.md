@@ -96,3 +96,50 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 [![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/gatsbyjs/gatsby-starter-hello-world)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+## 🎣 Publishing Hooks
+
+We have a few options as far as publishing content goes:
+
+### Immediate publishing from the article editor in Netlify CMS
+
+The default CMS settings do not include what Netlify calls the "editorial workflow" - when you create a new article, you can publish it immediately.
+
+How this works: behind the scenes, the CMS triggers a commit to the git repo. Default settings are that any commit to master should trigger a build. 
+
+* create a new article in the CMS
+* publish now 
+* that adds and commits the new article (markdown file) to the git repo
+* netlify runs a build (`gatsby build`)
+* this publishes the site as static files
+
+### Using the editorial workflow in Netlify CMS
+
+It's trivial to configure the CMS to instead use an editorial workflow. Instead of an article getting published immediately, it goes through a review process where its status changes from `draft` to `in review` to `ready`.  Once `ready` it may then be published (immediately) by clicking a publish button from the workflow page.
+
+How this works: saving an article generates a pull request in the github repo and applies a `draft` label. Changing its status will change the labeling on the pull request (`pending_review`, `pending_publish`). The article gets published either by clicking the workflow page's publish button, by clicking the `publish now` button in the article editor, or by merging the PR in Github. Note that clicking either CMS button is actually using Github APIs to merge the PR, so it's a UI wrapper to that GH process.
+
+* create a new article in the CMS
+* `save` instead of `publish now` (save is now your only option)
+* change the article status in either workflow tab or article editor
+* when ready to publish, click the publish now button in the CMS
+
+### Other options
+
+I think the above gives us decent publishing options, but they're also limited: you can't schedule content for publishing, it's all a manual process.
+
+However, all of our tools are highly configurable, so that means we should be able to extend them to allow for more flexibility.
+
+* interface with Github's API to merge a PR (opened in Netlify CMS's workflow) into master 🚀 automatically publish immediately
+* integrate other article editors with Github API to create PRs 🏗 draft new content for publishing
+  * care needs to be taken about proper formatting for gatsby articles
+* write lambda functions that run on cron to schedule publishing
+  * [netlify supports serverless function management](https://docs.netlify.com/functions/overview/#manage-your-serverless-functions)
+  * extend Netlify CMS with publish scheduler UI element
+  * cms scheduler UI element could write to dynamodb table `scheduled_articles` via AWS APIs
+  * lambda/netlify function could look for entries in `scheduled_articles` every hour and integrate with Github API to merge PR 🚀 publish
+* netlify also supports [build hooks](https://docs.netlify.com/configure-builds/build-hooks/#parameters)
+  * create a build hook on master, get URL
+  * integrate other services (like facet) into CMS
+  * trigger new build by posting to build hook URL
+  * I could see this being useful for media management, for example
